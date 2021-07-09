@@ -1,0 +1,9 @@
+*/**
+!*/
+!/rtl/**/*.vhd
+!/tb/**/*.vhd
+!/sw/altera/**/*.qpf
+!/sw/altera/**/*.qsf
+!/sw/mentor/**/*.mpf
+!/sw/mentor/**/*.do
+!/sw/xilinx/**/*.xpr
