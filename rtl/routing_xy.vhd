@@ -250,7 +250,7 @@ begin
         req_s_o <= '0';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "000";
+          next_w <= "111";
         else
           next_w <= "001";
         end if;
@@ -262,7 +262,7 @@ begin
         req_s_o <= '0';
         req_w_o <= '1';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "000";
+          next_w <= "111";
         else
           next_w <= "010";
         end if;
@@ -274,7 +274,7 @@ begin
         req_s_o <= '0';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "000";
+          next_w <= "111";
         else
           next_w <= "011";
         end if;
@@ -286,7 +286,7 @@ begin
         req_s_o <= '1';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "000";
+          next_w <= "111";
         else
           next_w <= "100";
         end if;
@@ -298,11 +298,18 @@ begin
         req_s_o <= '0';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "000";
+          next_w <= "111";
         else
           next_w <= "101";
         end if;
         -- others
+      when "111" =>
+        req_l_o <= '0';
+        req_n_o <= '0';
+        req_e_o <= '0';
+        req_s_o <= '0';
+        req_w_o <= '0';
+        next_w  <= "000";
       when others =>
         req_l_o <= '0';
         req_n_o <= '0';
