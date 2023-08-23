@@ -39,9 +39,8 @@ begin
         elsif (req_i(1) = '1') then
           next_w <= "101";
         elsif (req_i(0) = '1') then
-          next_w <= "111";
-        else
-          next_w <= "000";
+          next_w      <= "111";
+        else next_w <= "000";
         end if;
       when "001" =>
         if (req_i(3) = '1') then
@@ -51,9 +50,8 @@ begin
         elsif (req_i(1) = '1') then
           next_w <= "101";
         elsif (req_i(0) = '1') then
-          next_w <= "111";
-        else
-          next_w <= "010";
+          next_w      <= "111";
+        else next_w <= "010";
         end if;
       when "010" =>
         if (req_i(2) = '1') then
@@ -63,9 +61,8 @@ begin
         elsif (req_i(0) = '1') then
           next_w <= "111";
         elsif (req_i(3) = '1') then
-          next_w <= "001";
-        else
-          next_w <= "010";
+          next_w      <= "001";
+        else next_w <= "010";
         end if;
       when "011" =>
         if (req_i(2) = '1') then
@@ -75,9 +72,8 @@ begin
         elsif (req_i(0) = '1') then
           next_w <= "111";
         elsif (req_i(3) = '1') then
-          next_w <= "001";
-        else
-          next_w <= "100";
+          next_w      <= "001";
+        else next_w <= "100";
         end if;
       when "100" =>
         if (req_i(1) = '1') then
@@ -87,9 +83,8 @@ begin
         elsif (req_i(3) = '1') then
           next_w <= "001";
         elsif (req_i(2) = '1') then
-          next_w <= "011";
-        else
-          next_w <= "100";
+          next_w      <= "011";
+        else next_w <= "100";
         end if;
       when "101" =>
         if (req_i(1) = '1') then
@@ -99,9 +94,8 @@ begin
         elsif (req_i(3) = '1') then
           next_w <= "001";
         elsif (req_i(2) = '1') then
-          next_w <= "011";
-        else
-          next_w <= "110";
+          next_w      <= "011";
+        else next_w <= "110";
         end if;
       when "110" =>
         if (req_i(0) = '1') then
@@ -111,9 +105,8 @@ begin
         elsif (req_i(2) = '1') then
           next_w <= "011";
         elsif (req_i(1) = '1') then
-          next_w <= "101";
-        else
-          next_w <= "110";
+          next_w      <= "101";
+        else next_w <= "110";
         end if;
       when "111" =>
         if (req_i(0) = '1') then
@@ -123,9 +116,8 @@ begin
         elsif (req_i(2) = '1') then
           next_w <= "011";
         elsif (req_i(1) = '1') then
-          next_w <= "101";
-        else
-          next_w <= "000";
+          next_w      <= "101";
+        else next_w <= "000";
         end if;
         -- others
       when others =>
@@ -133,11 +125,7 @@ begin
     end case;
   end process;
 
-  gnt_w <= "1000" when current_r = "001" else
-    "0100" when current_r = "011" else
-    "0010" when current_r = "101" else
-    "0001" when current_r = "111" else
-    (others => '0');
+  gnt_w <= "1000" when current_r = "001" else "0100" when current_r = "011" else "0010" when current_r = "101" else "0001" when current_r = "111" else (others => '0');
   gnt_o <= req_i and gnt_w;
 
 end moore;
@@ -172,11 +160,10 @@ begin
           gnt_o  <= "0010";
           next_w <= "10";
         elsif (req_i(0) = '1') then
-          gnt_o  <= "0001";
-          next_w <= "11";
-        else
-          gnt_o  <= "0000";
-          next_w <= "00";
+          gnt_o      <= "0001";
+          next_w     <= "11";
+        else gnt_o <= "0000";
+          next_w     <= "00";
         end if;
       when "01" =>
         if (req_i(2) = '1') then
@@ -189,11 +176,10 @@ begin
           gnt_o  <= "0001";
           next_w <= "11";
         elsif (req_i(3) = '1') then
-          gnt_o  <= "1000";
-          next_w <= "00";
-        else
-          gnt_o  <= "0000";
-          next_w <= "01";
+          gnt_o      <= "1000";
+          next_w     <= "00";
+        else gnt_o <= "0000";
+          next_w     <= "01";
         end if;
       when "10" =>
         if (req_i(1) = '1') then
@@ -206,11 +192,10 @@ begin
           gnt_o  <= "1000";
           next_w <= "00";
         elsif (req_i(2) = '1') then
-          gnt_o  <= "0100";
-          next_w <= "01";
-        else
-          gnt_o  <= "0000";
-          next_w <= "10";
+          gnt_o      <= "0100";
+          next_w     <= "01";
+        else gnt_o <= "0000";
+          next_w     <= "10";
         end if;
       when "11" =>
         if (req_i(0) = '1') then
@@ -223,11 +208,10 @@ begin
           gnt_o  <= "0100";
           next_w <= "01";
         elsif (req_i(1) = '1') then
-          gnt_o  <= "0010";
-          next_w <= "10";
-        else
-          gnt_o  <= "0000";
-          next_w <= "11";
+          gnt_o      <= "0010";
+          next_w     <= "10";
+        else gnt_o <= "0000";
+          next_w     <= "11";
         end if;
         -- others
       when others =>

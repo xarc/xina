@@ -77,7 +77,7 @@ architecture rtl of xina is
 begin
 
   y0 :
-  for i in 0 to cols_p - 1 generate
+  for i in cols_p - 1 downto 0 generate
     y_in_data_w(i, rows_p) <= (others => '0');
     y_in_val_w(i, rows_p)  <= '0';
     y_out_ack_w(i, rows_p) <= '0';
@@ -87,7 +87,7 @@ begin
   end generate;
 
   x0 :
-  for j in 0 to rows_p - 1 generate
+  for j in rows_p - 1 downto 0 generate
     x_in_data_w(0, j)       <= (others => '0');
     x_in_val_w(0, j)        <= '0';
     x_out_ack_w(0, j)       <= '0';
@@ -97,9 +97,9 @@ begin
   end generate;
 
   col :
-  for i in 0 to cols_p - 1 generate
+  for i in cols_p - 1 downto 0 generate
     row :
-    for j in 0 to rows_p - 1 generate
+    for j in rows_p - 1 downto 0 generate
       router : entity work.router
         generic map(
           x_id_p             => i,

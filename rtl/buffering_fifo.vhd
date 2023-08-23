@@ -44,9 +44,8 @@ begin
         wr_ptr_r                     <= wr_ptr_r + 1;
         fifo_r(to_integer(wr_ptr_r)) <= data_i;
         if (rd_i = '1' and n_pos_r /= 0) then
-          rd_ptr_r <= rd_ptr_r + 1;
-        else
-          n_pos_r <= n_pos_r + 1;
+          rd_ptr_r     <= rd_ptr_r + 1;
+        else n_pos_r <= n_pos_r + 1;
         end if;
       elsif (rd_i = '1' and n_pos_r /= 0) then
         rd_ptr_r <= rd_ptr_r + 1;

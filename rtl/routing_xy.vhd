@@ -55,86 +55,72 @@ begin
           y_dst_v := to_integer(unsigned(data_i((data_width_p/2) - 1 downto 0)));
           if (x_dst_v /= x_id_p) then
             if (x_dst_v > x_id_p) then
-              next_w <= "0001";
-            else
-              next_w <= "0010";
+              next_w      <= "0001";
+            else next_w <= "0010";
             end if;
           elsif (y_dst_v /= y_id_p) then
             if (y_dst_v > y_id_p) then
-              next_w <= "0011";
-            else
-              next_w <= "0100";
+              next_w      <= "0011";
+            else next_w <= "0100";
             end if;
-          else
-            next_w <= "0101";
+          else next_w <= "0101";
           end if;
-        else
-          next_w <= "0000";
+        else next_w <= "0000";
         end if;
         -- x_dst_v > x_id_p
       when "0001" =>
         if (frame_i = '0' and rd_i = '1' and rok_i = '1') then
-          next_w <= "1001";
-        else
-          next_w <= "0001";
+          next_w      <= "1001";
+        else next_w <= "0001";
         end if;
       when "1001" =>
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "0000";
-        else
-          next_w <= "1001";
+          next_w      <= "0000";
+        else next_w <= "1001";
         end if;
         -- x_dst_v < x_id_p
       when "0010" =>
         if (frame_i = '0' and rd_i = '1' and rok_i = '1') then
-          next_w <= "1010";
-        else
-          next_w <= "0010";
+          next_w      <= "1010";
+        else next_w <= "0010";
         end if;
       when "1010" =>
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "0000";
-        else
-          next_w <= "1010";
+          next_w      <= "0000";
+        else next_w <= "1010";
         end if;
         -- y_dst_v > y_id_p
       when "0011" =>
         if (frame_i = '0' and rd_i = '1' and rok_i = '1') then
-          next_w <= "1011";
-        else
-          next_w <= "0011";
+          next_w      <= "1011";
+        else next_w <= "0011";
         end if;
       when "1011" =>
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "0000";
-        else
-          next_w <= "1011";
+          next_w      <= "0000";
+        else next_w <= "1011";
         end if;
         -- y_dst_v < y_id_p
       when "0100" =>
         if (frame_i = '0' and rd_i = '1' and rok_i = '1') then
-          next_w <= "1100";
-        else
-          next_w <= "0100";
+          next_w      <= "1100";
+        else next_w <= "0100";
         end if;
       when "1100" =>
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "0000";
-        else
-          next_w <= "1100";
+          next_w      <= "0000";
+        else next_w <= "1100";
         end if;
         -- x_dst_v = x_id_p and y_dst_v = y_id_p
       when "0101" =>
         if (frame_i = '0' and rd_i = '1' and rok_i = '1') then
-          next_w <= "1101";
-        else
-          next_w <= "0101";
+          next_w      <= "1101";
+        else next_w <= "0101";
         end if;
       when "1101" =>
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "0000";
-        else
-          next_w <= "1101";
+          next_w      <= "0000";
+        else next_w <= "1101";
         end if;
         -- others
       when others => next_w <= "0000";
@@ -182,20 +168,17 @@ begin
               req_s_o <= '0';
               req_w_o <= '0';
               if (rd_i = '1') then
-                next_w <= "001";
-              else
-                next_w <= "000";
+                next_w      <= "001";
+              else next_w <= "000";
               end if;
-            else
-              req_l_o <= '0';
-              req_n_o <= '0';
-              req_e_o <= '0';
-              req_s_o <= '0';
-              req_w_o <= '1';
+            else req_l_o <= '0';
+              req_n_o      <= '0';
+              req_e_o      <= '0';
+              req_s_o      <= '0';
+              req_w_o      <= '1';
               if (rd_i = '1') then
-                next_w <= "010";
-              else
-                next_w <= "000";
+                next_w      <= "010";
+              else next_w <= "000";
               end if;
             end if;
           elsif (y_dst_v /= y_id_p) then
@@ -206,41 +189,35 @@ begin
               req_s_o <= '0';
               req_w_o <= '0';
               if (rd_i = '1') then
-                next_w <= "011";
-              else
-                next_w <= "000";
+                next_w      <= "011";
+              else next_w <= "000";
               end if;
-            else
-              req_l_o <= '0';
-              req_n_o <= '0';
-              req_e_o <= '0';
-              req_s_o <= '1';
-              req_w_o <= '0';
+            else req_l_o <= '0';
+              req_n_o      <= '0';
+              req_e_o      <= '0';
+              req_s_o      <= '1';
+              req_w_o      <= '0';
               if (rd_i = '1') then
-                next_w <= "100";
-              else
-                next_w <= "000";
+                next_w      <= "100";
+              else next_w <= "000";
               end if;
             end if;
-          else
-            req_l_o <= '1';
-            req_n_o <= '0';
-            req_e_o <= '0';
-            req_s_o <= '0';
-            req_w_o <= '0';
+          else req_l_o <= '1';
+            req_n_o      <= '0';
+            req_e_o      <= '0';
+            req_s_o      <= '0';
+            req_w_o      <= '0';
             if (rd_i = '1') then
-              next_w <= "101";
-            else
-              next_w <= "000";
+              next_w      <= "101";
+            else next_w <= "000";
             end if;
           end if;
-        else
-          req_l_o <= '0';
-          req_n_o <= '0';
-          req_e_o <= '0';
-          req_s_o <= '0';
-          req_w_o <= '0';
-          next_w  <= "000";
+        else req_l_o <= '0';
+          req_n_o      <= '0';
+          req_e_o      <= '0';
+          req_s_o      <= '0';
+          req_w_o      <= '0';
+          next_w       <= "000";
         end if;
         -- x_dst_v > x_id_p
       when "001" =>
@@ -250,9 +227,8 @@ begin
         req_s_o <= '0';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "111";
-        else
-          next_w <= "001";
+          next_w      <= "111";
+        else next_w <= "001";
         end if;
         -- x_dst_v < x_id_p
       when "010" =>
@@ -262,9 +238,8 @@ begin
         req_s_o <= '0';
         req_w_o <= '1';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "111";
-        else
-          next_w <= "010";
+          next_w      <= "111";
+        else next_w <= "010";
         end if;
         -- y_dst_v > y_id_p
       when "011" =>
@@ -274,9 +249,8 @@ begin
         req_s_o <= '0';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "111";
-        else
-          next_w <= "011";
+          next_w      <= "111";
+        else next_w <= "011";
         end if;
         -- y_dst_v < y_id_p
       when "100" =>
@@ -286,9 +260,8 @@ begin
         req_s_o <= '1';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "111";
-        else
-          next_w <= "100";
+          next_w      <= "111";
+        else next_w <= "100";
         end if;
         -- x_dst_v = x_id_p and y_dst_v = y_id_p
       when "101" =>
@@ -298,9 +271,8 @@ begin
         req_s_o <= '0';
         req_w_o <= '0';
         if (frame_i = '1' and rd_i = '1' and rok_i = '1') then
-          next_w <= "111";
-        else
-          next_w <= "101";
+          next_w      <= "111";
+        else next_w <= "101";
         end if;
         -- others
       when "111" =>

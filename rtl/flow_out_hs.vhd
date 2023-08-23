@@ -41,21 +41,18 @@ begin
     case current_r is
       when "00" =>
         if (ack_i = '0' and rok_i = '1') then
-          next_w <= "01";
-        else
-          next_w <= "00";
+          next_w      <= "01";
+        else next_w <= "00";
         end if;
       when "01" =>
         if (ack_i = '1') then
-          next_w <= "10";
-        else
-          next_w <= "01";
+          next_w      <= "10";
+        else next_w <= "01";
         end if;
       when "10" =>
         if (ack_i = '0' and rok_i = '1') then
-          next_w <= "01";
-        else
-          next_w <= "00";
+          next_w      <= "01";
+        else next_w <= "00";
         end if;
       when others => next_w <= "00";
     end case;
@@ -88,23 +85,21 @@ begin
     case current_r is
       when '0' =>
         if (ack_i = '0' and rok_i = '1') then
-          val_o  <= '1';
-          rd_o   <= '0';
-          next_w <= '1';
-        else
-          val_o  <= '0';
-          rd_o   <= '0';
-          next_w <= '0';
+          val_o      <= '1';
+          rd_o       <= '0';
+          next_w     <= '1';
+        else val_o <= '0';
+          rd_o       <= '0';
+          next_w     <= '0';
         end if;
       when '1' =>
         if (ack_i = '1') then
-          val_o  <= '1';
-          rd_o   <= '1';
-          next_w <= '0';
-        else
-          val_o  <= '1';
-          rd_o   <= '0';
-          next_w <= '1';
+          val_o      <= '1';
+          rd_o       <= '1';
+          next_w     <= '0';
+        else val_o <= '1';
+          rd_o       <= '0';
+          next_w     <= '1';
         end if;
       when others =>
         val_o  <= '0';
