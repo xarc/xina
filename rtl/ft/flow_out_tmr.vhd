@@ -27,9 +27,6 @@ architecture rtl of flow_out_tmr is
   signal val_w : bit_t;
   signal rd_w  : bit_t;
 
-  type bit_vector_t is array (2 downto 0) of std_logic_vector(data_width_p downto 0);
-  signal data_w : bit_vector_t;
-
 begin
 
   tmr :
@@ -41,21 +38,17 @@ begin
       port map(
         clk_i  => clk_i,
         rst_i  => rst_i,
-        data_o => data_w(i),
+        data_o => open,
         val_o  => val_w(i),
         ack_i  => ack_i,
-        data_i => data_i,
+        data_i => (others => '0'),
         rok_i  => rok_i,
         rd_o   => rd_w(i)
       );
   end generate;
 
-  tmr_vector :
-  for i in data_width_p downto 0 generate
-    data_o(i) <= (data_w(0)(i) and data_w(1)(i)) or (data_w(0)(i) and data_w(2)(i)) or (data_w(1)(i) and data_w(2)(i));
-  end generate;
-
-  val_o <= (val_w(0) and val_w(1)) or (val_w(0) and val_w(2)) or (val_w(1) and val_w(2));
-  rd_o  <= (rd_w(0) and rd_w(1)) or (rd_w(0) and rd_w(2)) or (rd_w(1) and rd_w(2));
+  val_o  <= (val_w(0) and val_w(1)) or (val_w(0) and val_w(2)) or (val_w(1) and val_w(2));
+  rd_o   <= (rd_w(0) and rd_w(1)) or (rd_w(0) and rd_w(2)) or (rd_w(1) and rd_w(2));
+  data_o <= data_i;
 
 end rtl;
