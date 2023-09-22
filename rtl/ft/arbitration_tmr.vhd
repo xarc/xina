@@ -24,6 +24,9 @@ begin
   tmr :
   for i in 2 downto 0 generate
     arbitration : entity work.arbitration
+      generic map(
+        mode_p => mode_p
+      )
       port map(
         clk_i => clk_i,
         rst_i => rst_i,

@@ -43,6 +43,7 @@ begin
   for i in 2 downto 0 generate
     routing : entity work.routing
       generic map(
+        mode_p       => mode_p,
         x_id_p       => x_id_p,
         y_id_p       => y_id_p,
         data_width_p => data_width_p

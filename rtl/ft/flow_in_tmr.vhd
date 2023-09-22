@@ -33,6 +33,7 @@ begin
   for i in 2 downto 0 generate
     flow_in : entity work.flow_in
       generic map(
+        mode_p       => mode_p,
         data_width_p => data_width_p
       )
       port map(
