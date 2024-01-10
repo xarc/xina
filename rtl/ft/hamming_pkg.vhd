@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 package hamming_pkg is
 
-  type par_set_t is array (natural range <>, natural range <>) of integer;
+  type par_set_t is array (natural range < >, natural range <>) of integer;
   type par_err_t is array (natural range <>) of std_logic_vector(6 downto 0);
 
   constant par_set_c : par_set_t := (
@@ -115,7 +115,7 @@ package body hamming_pkg is
   function par_width_f (width_p : in positive) return positive is
   begin
     for i in 0 to par_set_c'length(1) - 1 loop
-      if width_p < par_set_c(i, 0) then
+      if width_p <= par_set_c(i, 0) then
         return i;
       end if;
     end loop;
