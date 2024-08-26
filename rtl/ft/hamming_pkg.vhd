@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 package hamming_pkg is
 
-  type par_set_t is array (natural range < >, natural range <>) of integer;
+  type par_set_t is array (natural range <>, natural range <>) of integer;
   type par_err_t is array (natural range <>) of std_logic_vector(6 downto 0);
 
   constant par_set_c : par_set_t := (
